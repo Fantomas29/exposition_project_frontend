@@ -1,23 +1,25 @@
 <template>
-  <v-app>
-    
-    <v-system-bar color="deep-purple darken-3"></v-system-bar>
-
-    <v-app-bar max-height="50"
+  <div>
+    <v-app-bar
       color="deep-purple accent-4"
+      dense
       dark
-      prominent
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>My files</v-toolbar-title>
+      <v-toolbar-title>Mon exposition</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
 
     </v-app-bar>
 
     <v-navigation-drawer
       v-model="drawer"
       absolute
-      bottom
       temporary
     >
       <v-list
@@ -28,30 +30,24 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
+
+          <v-list-item v-for="item in items" :key="item.title" :to="item.route">
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
           </v-list-item>
 
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
-      <v-main>
+    <v-main>
         <router-view />
-      </v-main>
-
-  </v-app>
+    </v-main>
+  </div>
 </template>
 
 <script>
@@ -61,6 +57,10 @@ export default {
   data: () => ({
       drawer: false,
       group: null,
+      items: [
+          {icon: 'mdi-home', title:'Accueil', route:'/'},
+          {icon: 'mdi-information', title:'A propos', route:'/about'}
+      ],
     }),
 
     watch: {
