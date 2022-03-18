@@ -1,6 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import ExpositionView from "../views/ExpositionView"
+import ExposantView from "../views/ExposantView"
+import InscriptionView from "../views/InscriptionView"
+import LivreDorView from "../views/LivreDorView.vue"
 
 Vue.use(VueRouter);
 
@@ -18,6 +22,26 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/exposition",
+    name: "exposition",
+    component: ExpositionView,
+  },
+  {
+    path: "/exposant",
+    name: "exposant",
+    component: ExposantView,
+  },
+  {
+    path: "/inscription",
+    name: "inscription",
+    component: InscriptionView,
+  },
+  {
+    path: "/livredor",
+    name: "livredor",
+    component: LivreDorView,
   },
 ];
 

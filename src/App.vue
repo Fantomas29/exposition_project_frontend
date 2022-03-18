@@ -10,9 +10,9 @@
       <v-toolbar-title>Mon exposition</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
+        Inscription
       <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
+        <v-icon v-on:click="navigateToInscription">mdi-clipboard-account-outline </v-icon>
       </v-btn>
 
     </v-app-bar>
@@ -59,9 +59,19 @@ export default {
       group: null,
       items: [
           {icon: 'mdi-home', title:'Accueil', route:'/'},
-          {icon: 'mdi-information', title:'A propos', route:'/about'}
+          {icon: 'mdi-information', title:'A propos', route:'/about'},
+          {icon:'mdi-image-multiple', title:'Exposition', route:'/exposition'},
+          {icon:'mdi-account-group', title:'Exposants', route:'/exposant'},
+          {icon:'mdi-comment', title:'Livre d\'or', route:'/livredor'},
       ],
     }),
+
+   methods : {
+      navigateToInscription: function (){
+        if (this.$route.path !== '/inscription')
+          this.$router.push('/inscription');
+      }
+   },
 
     watch: {
       group () {
