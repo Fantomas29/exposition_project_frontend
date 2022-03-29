@@ -1,6 +1,14 @@
 # johan_exposition_front
 
-## Project setup
+## prérequis
+
+```
+node.js
+npm
+php
+```
+
+## Installations dépendances javascript
 ```
 npm install
 ```
